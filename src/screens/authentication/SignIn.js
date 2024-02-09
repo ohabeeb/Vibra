@@ -13,11 +13,11 @@ import {
 } from 'react-native';
 import React from 'react';
 import auth from '@react-native-firebase/auth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
-import {FormInput, TextButton} from '../../components';
+import { FormInput, TextButton } from '../../components';
 
-export default function SignIn({navigation}) {
+export default function SignIn({ navigation }) {
   const [email, setEmial] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [errorMessage, setErrorMesseage] = React.useState('');
@@ -32,9 +32,9 @@ export default function SignIn({navigation}) {
 
   async function onGoogleButtonPress() {
     // Check if your device supports Google Play
-    await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
     // Get the users ID token
-    const {idToken} = await GoogleSignin.signIn();
+    const { idToken } = await GoogleSignin.signIn();
     navigation.replace('Tabs');
 
     // Create a Google credential with the token
@@ -76,11 +76,11 @@ export default function SignIn({navigation}) {
   };
   return (
     <View style={styles.container}>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{fontSize: 40, fontWeight: 'bold', color: 'maroon'}}>
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 40, fontWeight: 'bold', color: 'maroon' }}>
           Vibra
         </Text>
-        <Text style={{fontSize: 16, marginTop: 10}}>Let's sign you in!</Text>
+        <Text style={{ fontSize: 16, marginTop: 10 }}>Let's sign you in!</Text>
       </View>
       <KeyboardAvoidingView behavior="padding">
         <FormInput
@@ -105,7 +105,7 @@ export default function SignIn({navigation}) {
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => setToggleRememberMe(!toggleRememberMe)}
-          style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+          style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }}>
           {toggleRememberMe ? (
             <View
               style={{
@@ -139,10 +139,10 @@ export default function SignIn({navigation}) {
         }}
       />
 
-      <View style={{flexDirection: 'row', gap: 5, justifyContent: 'center'}}>
-        <Text style={{fontSize: 14}}>New to Vibra?</Text>
+      <View style={{ flexDirection: 'row', gap: 5, justifyContent: 'center' }}>
+        <Text style={{ fontSize: 14 }}>New to Vibra?</Text>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('SignUp')}>
-          <Text style={{color: 'maroon', fontSize: 14}}>Sign Up</Text>
+          <Text style={{ color: 'maroon', fontSize: 14 }}>Sign Up</Text>
         </TouchableWithoutFeedback>
       </View>
       <View
@@ -158,9 +158,9 @@ export default function SignIn({navigation}) {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <View style={{flex: 1, backgroundColor: 'maroon', height: 2}} />
+          <View style={{ flex: 1, backgroundColor: 'maroon', height: 2 }} />
           <Text>Or</Text>
-          <View style={{flex: 1, backgroundColor: 'maroon', height: 2}} />
+          <View style={{ flex: 1, backgroundColor: 'maroon', height: 2 }} />
         </View>
         <Text>Continue with</Text>
       </View>
@@ -171,23 +171,6 @@ export default function SignIn({navigation}) {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-          {/* Facebook  */}
-        <TouchableOpacity
-          style={{
-            height: 40,
-            width: 40,
-            borderRadius: 5,
-            borderWidth: 1,
-            borderColor: 'maroon',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Image
-            source={require('../../assets/icons/facebook.png')}
-            resizeMode="contain"
-            style={{width: 30, height: 30}}
-          />
-        </TouchableOpacity>
         {/* Google  */}
         <TouchableOpacity
           onPress={() => onGoogleButtonPress()}
@@ -203,9 +186,27 @@ export default function SignIn({navigation}) {
           <Image
             source={require('../../assets/icons/google.png')}
             resizeMode="contain"
-            style={{width: 30, height: 30}}
+            style={{ width: 30, height: 30 }}
           />
         </TouchableOpacity>
+        {/* Facebook  */}
+        <TouchableOpacity
+          style={{
+            height: 40,
+            width: 40,
+            borderRadius: 5,
+            borderWidth: 1,
+            borderColor: 'maroon',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image
+            source={require('../../assets/icons/facebook.png')}
+            resizeMode="contain"
+            style={{ width: 30, height: 30 }}
+          />
+        </TouchableOpacity>
+
         {/* Twitter  */}
         <TouchableOpacity
           style={{
@@ -220,7 +221,7 @@ export default function SignIn({navigation}) {
           <Image
             source={require('../../assets/icons/twitter.png')}
             resizeMode="contain"
-            style={{width: 30, height: 30}}
+            style={{ width: 30, height: 30 }}
           />
         </TouchableOpacity>
       </View>
